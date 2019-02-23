@@ -62,7 +62,7 @@ echo "successfully connected to database".PHP_EOL;
                         //No Match
 			$query = mysqli_query($mydb,"INSERT INTO testTable (firstname, lastname, email, password) VALUES ('$fname','$lname','$email','$password')");
 
-			echo "<br><br>Mehta Suck!!!!";
+			echo "<br><br>Mehta Sucks !!!!";
                         return false;
                 }
 
