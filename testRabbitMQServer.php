@@ -6,7 +6,7 @@ require_once('rabbitMQLib.inc');
 
 function doLogin($username,$password)
 {	
-$mydb = new mysqli('192.168.1.8','dbuser','pass1','testDb');
+$mydb = new mysqli('192.168.1.105','dbuser','pass1','testDb');
 
 if ($mydb->errno != 0)
 {
@@ -40,7 +40,7 @@ if ($mydb->errno != 0)
 
 function doregister($fname,$lname,$email,$password)
 {
-$mydb = new mysqli('192.168.1.8','dbuser','pass1','testDb');
+$mydb = new mysqli('192.168.1.105','dbuser','pass1','testDb');
 
 if ($mydb->errno != 0)
 {
@@ -62,7 +62,7 @@ echo "successfully connected to database".PHP_EOL;
                         //No Match
 			$query = mysqli_query($mydb,"INSERT INTO testTable (firstname, lastname, email, password) VALUES ('$fname','$lname','$email','$password')");
 
-			echo "<br><br>Mehta Sucks !!!!";
+			echo "<br><br>Register Successful!!!!";
                         return false;
                 }
 
@@ -78,8 +78,6 @@ if ($mydb->errno != 0)
 }
 
 
-
-
 function requestProcessor($request)
 {
   echo "received request".PHP_EOL;
@@ -91,7 +89,7 @@ function requestProcessor($request)
   switch ($request['type'])
   {
     case "login":
-	    return doLogin($request['username'],$request['password']);
+	    return doLogin($request['email'],$request['password']);
     case "register":
 	  return doregister($request ['fname'],$request['lname'],$request['email'],$request['password']);
 
